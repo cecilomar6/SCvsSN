@@ -21,8 +21,8 @@ library(clusterProfiler)
 
 # Loading datasets ----
 
-sn <- readRDS("SNvsSC/GEO submission/20250730_GEO_submission_all_files/SN_annotated_dataset.rds")
-sc <- readRDS("datasets/20250609_GSE141259_SC_tidy.rds")
+sn <- readRDS("SN_annotated_dataset.rds")
+sc <- readRDS("20250609_GSE141259_SC_tidy.rds")
 
 ## Downsampling SN ----
 
@@ -69,11 +69,11 @@ DimPlot(data,
         raster = FALSE,
         pt.size = 0.01)
 
-base::saveRDS(data, "datasets/20250609_SCvsSN_aligned_downsampled_seurat.rds")
+base::saveRDS(data, "20250609_SCvsSN_aligned_downsampled_seurat.rds")
 
 # Reading aligned dataset ----
 
-data <- readRDS("datasets/20250609_SCvsSN_aligned_downsampled_seurat.rds")
+data <- readRDS("20250609_SCvsSN_aligned_downsampled_seurat.rds")
 
 cds <- SeuratWrappers::as.cell_data_set(data)
 cds <- cds[, !is.na(cds$annotation)]                  # Dealing with 28 NA annotations
