@@ -1,7 +1,6 @@
 ################### 20250609. Tidying datasets ##########################
 
-# After the last meeting I think we have a better idea of what and how we 
-# want to display the data, so let's save an object in that format.
+# Formatting datasets downloaded from GEO
 
 #########################################################################
 
@@ -128,11 +127,10 @@ rownames(sc) <- fData(sc)$gene_short_name
 base::saveRDS(sc, "datasets/20250609_GSE141259_SC_tidy.rds")
 
 
-# Checking if they work ----
+# Checking if it works ----
 
-sn <- readRDS("datasets/20250609_SN_tidy.rds")
+sn <- readRDS("SN_annotated_dataset.rds")
 sc <- readRDS("datasets/20250609_GSE141259_SC_tidy.rds")
-
 
 cds <- combine_cds(list(sn, sc))
 pData(cds)
