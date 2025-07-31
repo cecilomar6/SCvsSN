@@ -25,7 +25,7 @@ okabe_ito_extended2 <- c(
 
 # Figure 1. SN descriptors ----
 
-sn <- readRDS("SNvsSC/GEO submission/20250730_GEO_submission_all_files/SN_annotated_dataset.rds")
+sn <- readRDS("SN_annotated_dataset.rds")
 
 ## Celltype_fine UMAP ----
 
