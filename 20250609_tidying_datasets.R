@@ -19,24 +19,6 @@ library(clusterProfiler)
 
 #########################################################################
 
-# SN ----
-
-sn <- readRDS("datasets/20250113_FBwellAnnotated.rds")
-sn <- detect_genes(sn)
-
-sn$technique <- "SN"
-sn$UMAP1 <- reducedDim(sn, "UMAP")[,1]
-sn$UMAP2 <- reducedDim(sn, "UMAP")[,2]
-levels(sn$condition) <- c("Day 0", "Day 7", "Day 14", "Day 21")
-rownames(sn)[str_detect(rownames(sn), "Tomato")] <- "tdTomato"
-
-pData(sn) <- pData(sn)[,c("cell", "Size_Factor", "n.umi", "num_genes_expressed", "UMAP1", "UMAP2", 
-                          "sample.id", "condition","technique", "annotation", "celltype_main", "celltype_mid")]
-
-rownames(sn) <- fData(sn)$gene_short_name
-
-base::saveRDS(sn, "datasets/20250609_SN_tidy.rds")
-
 # SC ----
 
 ## Reading dataset from GEO ----
