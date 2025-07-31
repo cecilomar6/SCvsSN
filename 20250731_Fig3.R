@@ -20,11 +20,11 @@ library(clusterProfiler)
 
 ## Loading datasets ----
 
-sn <- readRDS("SNvsSC/GEO submission/20250730_GEO_submission_all_files/SN_annotated_dataset.rds")
+sn <- readRDS("SN_annotated_dataset.rds")
 sn <- sn[, sn$celltype_main == "Mesenchymal cells"]
 dim(sn)
 
-stroma <- readRDS("datasets/20250609_GSE210341_stroma_tidy.rds")
+stroma <- readRDS("20250609_GSE210341_stroma_tidy.rds")
 
 # Downsizing stroma to the max number of sn mesenchymal cells
 set.seed(1000)
@@ -74,9 +74,9 @@ data$annotation <- factor(data$annotation,
 data$technique_annotation <- paste(data$technique, data$annotation, sep = " ")
 
 
-base::saveRDS(data, "datasets/20250610_sortedSCvsSN_aligned_downsampled_seurat.rds")
+base::saveRDS(data, "20250610_sortedSCvsSN_aligned_downsampled_seurat.rds")
 
-data <- readRDS("datasets/20250610_sortedSCvsSN_aligned_downsampled_seurat.rds")
+data <- readRDS("20250610_sortedSCvsSN_aligned_downsampled_seurat.rds")
 
 ## technique UMAP ----
 
